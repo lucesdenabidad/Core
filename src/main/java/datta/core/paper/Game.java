@@ -1,11 +1,10 @@
-package me.aleiv.core.paper;
+package datta.core.paper;
 
-import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
-
+import datta.core.paper.events.GameTickEvent;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import me.aleiv.core.paper.events.GameTickEvent;
+import org.bukkit.Bukkit;
+import org.bukkit.scheduler.BukkitRunnable;
 
 @Data
 @EqualsAndHashCode(callSuper = false)

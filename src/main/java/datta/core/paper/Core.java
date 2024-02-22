@@ -1,26 +1,28 @@
-package me.aleiv.core.paper;
+package datta.core.paper;
 
+import co.aikar.commands.PaperCommandManager;
+import datta.core.paper.commands.GlobalCMD;
+import datta.core.paper.guis.ExampleGUI;
+import datta.core.paper.listeners.GlobalListener;
+import datta.core.paper.utilities.MenuBuilder;
+import datta.core.paper.utilities.NegativeSpaces;
+import datta.core.paper.utilities.TCT.BukkitTCT;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import co.aikar.commands.PaperCommandManager;
-import kr.entree.spigradle.annotations.SpigotPlugin;
-import lombok.Getter;
-import me.aleiv.core.paper.commands.GlobalCMD;
-import me.aleiv.core.paper.listeners.GlobalListener;
-import me.aleiv.core.paper.utilities.NegativeSpaces;
-import me.aleiv.core.paper.utilities.TCT.BukkitTCT;
 
-@SpigotPlugin
 public class Core extends JavaPlugin {
 
     private static @Getter Core instance;
     private @Getter Game game;
     private @Getter PaperCommandManager commandManager;
 
+    public static MenuBuilder menuBuilder;
     @Override
     public void onEnable() {
         instance = this;
+        menuBuilder = new MenuBuilder(this);
 
         BukkitTCT.registerPlugin(this);
         NegativeSpaces.registerCodes();
@@ -33,9 +35,8 @@ public class Core extends JavaPlugin {
 
         //COMMANDS
         commandManager = new PaperCommandManager(this);
-
         commandManager.registerCommand(new GlobalCMD(this));
-
+        commandManager.registerCommand(new ExampleGUI());
     }
 
     @Override

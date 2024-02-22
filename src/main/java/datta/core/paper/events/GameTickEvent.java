@@ -1,9 +1,8 @@
-package me.aleiv.core.paper.events;
-
-import org.bukkit.event.Event;
-import org.bukkit.event.HandlerList;
+package datta.core.paper.events;
 
 import lombok.Getter;
+import org.bukkit.event.Event;
+import org.bukkit.event.HandlerList;
 
 public class GameTickEvent extends Event {
     
