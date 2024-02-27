@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("ALL")
@@ -118,6 +119,22 @@ public class MenuBuilder implements Listener {
 
     public static int slot(int x, int y) {
         return (y - 1) * 9 + (x - 1);
+    }
+
+    public static void addListToMenu(Player player, MenuBuilder menuBuilder, List<Object> list, int page, int[] allowedSlots, ItemStack itemStack, Runnable runnable) {
+        for (int i = 0; i < allowedSlots.length; i++) {
+            int slot = allowedSlots[i];
+            int index = page * allowedSlots.length + i;
+            if (index < list.size()) {
+                Object altura = list.get(index);
+                menuBuilder.setItem(player, slot, itemStack, runnable);
+            }
+        }
+    }
+
+    public static Object getFromList(List list, int index) {
+        Object o = list.get(index);
+        return o;
     }
 
     public class Menu {

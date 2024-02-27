@@ -1,45 +1,34 @@
 package datta.core.paper.utilities;
 
 
-import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkEffectMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static datta.core.paper.utilities.Color.format;
 import static datta.core.paper.utilities.Color.formatList;
 
 
 @SuppressWarnings("ALL")
-public class ItemBuilder implements Listener {
-
-    private JavaPlugin plugin;
+public class ItemBuilder {
     private String displayName;
     private List<String> lore;
     private Material material;
 
-    public ItemBuilder(JavaPlugin plugin) {
-        this.plugin = plugin;
-    }
-
-    public ItemBuilder() {
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
-
     public ItemBuilder(Material material, String displayName, String... lore) {
         this.displayName = displayName;
-        this.lore = Arrays.asList(lore); // Usar Arrays.asList para evitar la creación de una nueva lista
+        this.lore = Arrays.asList(lore);
         this.material = material;
     }
 
@@ -84,8 +73,8 @@ public class ItemBuilder implements Listener {
     public ItemStack buildCustomModelData(int customModelData) {
         ItemStack itemStack = new ItemStack(material);
         ItemMeta itemMeta = itemStack.getItemMeta();
-        setupItemMeta(itemStack, itemMeta);
         itemMeta.setCustomModelData(customModelData);
+        setupItemMeta(itemStack, itemMeta);
         return itemStack;
     }
 
