@@ -2,16 +2,21 @@ package datta.core.paper;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.PaperCommandManager;
+import datta.core.paper.animations.ExpulseAnimation;
+import datta.core.paper.animations.KillAnimation;
+import datta.core.paper.animations.am.AnimationManager;
 import datta.core.paper.commands.GlobalCMD;
 import datta.core.paper.events.MessagesEvent;
-import datta.core.paper.service.PlayerReset;
-import datta.core.paper.service.Slots;
+import datta.core.paper.items.list.KickStick;
+import datta.core.paper.items.list.KillStick;
+import datta.core.paper.service.ResetService;
+import datta.core.paper.service.SlotService;
 import datta.core.paper.task.BroadcastSenderTask;
-import datta.core.paper.utilities.MenuBuilder;
-import datta.core.paper.utilities.configuration.Configuration;
-import datta.core.paper.utilities.configuration.ConfigurationManager;
+import datta.core.paper.utilities.builders.MenuBuilder;
+import datta.core.paper.utilities.etc.configuration.Configuration;
+import datta.core.paper.utilities.etc.configuration.ConfigurationManager;
 import datta.core.paper.utilities.score.ScoreHolder;
-import datta.core.paper.utilities.services.Timer;
+import datta.core.paper.utilities.services.TimerService;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -59,17 +64,27 @@ public class Core extends JavaPlugin {
         register(new MessagesEvent());
 
         // SERVICES
-        registerBoth(new Slots());
-        PlayerReset playerReset = new PlayerReset();
-        playerReset.hook();
+        AnimationManager animationManager = new AnimationManager(commandManager);
+        animationManager.register(new KillAnimation());
+        animationManager.register(new ExpulseAnimation());
+
+        registerBoth(new SlotService());
+
+        ResetService resetService = new ResetService();
+        resetService.hook();
 
         //COMMANDS
-            commandManager.registerCommand(new GlobalCMD());
+        commandManager.registerCommand(new GlobalCMD());
+
+        // ITEMS
+        registerBoth(new KickStick());
+        registerBoth(new KillStick());
+
     }
 
     @Override
     public void onDisable() {
-        Timer.removeBar();
+        TimerService.removeBar();
     }
 
     public static void registerBoth(Object object) {
@@ -79,12 +94,9 @@ public class Core extends JavaPlugin {
     public static void register(Object object) {
         if (object instanceof BaseCommand) {
             commandManager.registerCommand((BaseCommand) object);
-        } else if (object instanceof Listener) {
+        }
+        if (object instanceof Listener) {
             Bukkit.getPluginManager().registerEvents((Listener) object, Core.getInstance());
-        } else if (object instanceof Listener && object instanceof BaseCommand) {
-            Bukkit.getPluginManager().registerEvents((Listener) object, Core.getInstance());
-            commandManager.registerCommand((BaseCommand) object);
-
         }
     }
 }

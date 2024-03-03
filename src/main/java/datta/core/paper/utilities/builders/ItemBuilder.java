@@ -1,4 +1,4 @@
-package datta.core.paper.utilities;
+package datta.core.paper.utilities.builders;
 
 
 import org.bukkit.Color;
@@ -94,7 +94,7 @@ public class ItemBuilder {
     }
 
     public ItemStack buildPlayerHead(String playerName) {
-        ItemStack itemStack = SkullCreator.itemFromName(playerName);
+        ItemStack itemStack = SkullBuilder.itemFromName(playerName);
         SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
         setupItemMeta(itemStack, skullMeta);
         return itemStack;
@@ -122,7 +122,7 @@ public class ItemBuilder {
 
 
     public ItemStack buildTexture(String textureUrl) {
-        ItemStack itemStack = SkullCreator.itemFromUrl(textureUrl);
+        ItemStack itemStack = SkullBuilder.itemFromUrl(textureUrl);
         SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
         setupItemMeta(itemStack, skullMeta);
         return itemStack;

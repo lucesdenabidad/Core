@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
-public class PlayerReset implements Listener {
+public class ResetService implements Listener {
 
     public boolean deleteData = true;
     public boolean removePlayerDataOnLeave = true;
@@ -23,7 +23,7 @@ public class PlayerReset implements Listener {
 
     public @NotNull String world = Bukkit.getWorlds().get(0).getName();
 
-    public PlayerReset() {
+    public ResetService() {
         Bukkit.getPluginManager().registerEvents(this, Core.getInstance());
     }
 
@@ -37,7 +37,7 @@ public class PlayerReset implements Listener {
             try {
                 Runtime.getRuntime().addShutdownHook(new Thread() {
                     public void run() {
-                        PlayerReset.this.deleteAllData();
+                        ResetService.this.deleteAllData();
                     }
                 });
             } catch (Exception var2) {

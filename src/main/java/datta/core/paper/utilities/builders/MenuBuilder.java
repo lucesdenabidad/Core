@@ -1,4 +1,4 @@
-package datta.core.paper.utilities;
+package datta.core.paper.utilities.builders;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;

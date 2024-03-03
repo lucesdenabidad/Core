@@ -12,7 +12,7 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 import static datta.core.paper.utilities.Utils.send;
 
-public class Slots extends BaseCommand implements Listener {
+public class SlotService extends BaseCommand implements Listener {
     public static int slots = Core.getInstance().getServer().getMaxPlayers();
 
     @CommandPermission("core.admin")

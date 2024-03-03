@@ -1,7 +1,7 @@
 
 
 /* Decompiler 21ms, total 169ms, lines 80 */
-package datta.core.paper.utilities.worldedit;
+package datta.core.paper.utilities.services;
 
 import com.sk89q.worldedit.EditSession;
 import com.sk89q.worldedit.IncompleteRegionException;
@@ -22,7 +22,7 @@ import java.util.Random;
 
 import static org.bukkit.Bukkit.getServer;
 
-public class WorldEditTool {
+public class WorldEditService {
    public static Region getWorldEditSelection(Player player) {
       try {
          WorldEditPlugin worldEditPlugin = getWorldEditPlugin();

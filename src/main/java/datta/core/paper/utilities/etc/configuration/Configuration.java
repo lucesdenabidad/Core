@@ -1,4 +1,4 @@
-package datta.core.paper.utilities.configuration;
+package datta.core.paper.utilities.etc.configuration;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

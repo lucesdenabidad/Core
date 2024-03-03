@@ -1,4 +1,4 @@
-package datta.core.paper.utilities;
+package datta.core.paper.utilities.builders;
 
 // Copyright (c) 2017 deanveloper (see LICENSE.md for more info)
 
@@ -28,9 +28,9 @@ import java.util.UUID;
  *
  * @author deanveloper on 12/28/2016.
  */
-public class SkullCreator {
+public class SkullBuilder {
 
-	private SkullCreator() {}
+	private SkullBuilder() {}
 
 	private static boolean warningPosted = false;
 

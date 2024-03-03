@@ -1,4 +1,4 @@
-package datta.core.paper.utilities;
+package datta.core.paper.utilities.builders;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.Color;
@@ -27,4 +27,6 @@ public class ParticleBuilder {
             length += space;
         }
     }
+
+
 }

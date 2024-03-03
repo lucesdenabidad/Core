@@ -1,4 +1,4 @@
-package datta.core.paper.utilities.TCT;
+package datta.core.paper.utilities.etc;
 
 import datta.core.paper.Core;
 import org.bukkit.Bukkit;

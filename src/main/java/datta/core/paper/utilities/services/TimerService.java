@@ -9,12 +9,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import javax.print.DocFlavor;
-
 import static datta.core.paper.utilities.Color.format;
 import static datta.core.paper.utilities.Color.formatTime;
 
-public class Timer {
+public class TimerService {
     public static BossBar bossBar;
 
     public static void timer(String title, BarColor barColor, BarStyle barStyle, int seconds, Runnable runnable) {
